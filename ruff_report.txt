@@ -1,0 +1,26 @@
+I001 [*] Import block is un-sorted or un-formatted
+ --> vulnerable_demo.py:1:1
+  |
+1 | / import os
+2 | | import sqlite3
+3 | | import pickle
+4 | | import hashlib
+5 | | import random
+  | |_____________^
+6 |
+7 |   ADMIN_PASSWORD = "admin123" # hardcoded secret
+  |
+help: Organize imports
+  |
+1 + import hashlib
+2 | import os
+  - import sqlite3
+3 | import pickle
+  - import hashlib
+4 | import random
+5 + import sqlite3
+6 |
+  |
+
+Found 1 error.
+[*] 1 fixable with the `--fix` option.
