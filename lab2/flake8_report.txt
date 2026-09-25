@@ -1,0 +1,6 @@
+student_portal.py:11:80: E501 line too long (93 > 79 characters)
+student_portal.py:16:80: E501 line too long (99 > 79 characters)
+student_portal.py:21:80: E501 line too long (87 > 79 characters)
+student_portal.py:26:80: E501 line too long (97 > 79 characters)
+student_portal.py:31:80: E501 line too long (89 > 79 characters)
+student_portal.py:38:80: E501 line too long (101 > 79 characters)

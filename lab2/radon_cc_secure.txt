@@ -1,0 +1,14 @@
+student_portal_secure.py
+    F 14:0 authenticate - A
+    F 32:0 require_role - A
+    F 36:0 safe_read_uploaded_file - A
+    F 52:0 delete_student - A
+    F 62:0 save_comment - A
+    F 88:0 process_student_request - A
+    F 27:0 verify_password - A
+    F 45:0 view_grade - A
+    F 75:0 hash_password - A
+    F 83:0 log_login_attempt - A
+
+10 blocks (classes, functions, methods) analyzed.
+Average complexity: A (1.7)

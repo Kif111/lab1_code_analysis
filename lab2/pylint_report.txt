@@ -1,0 +1,16 @@
+************* Module student_portal
+student_portal.py:38:0: C0301: Line too long (101/100) (line-too-long)
+student_portal.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+student_portal.py:11:0: C0116: Missing function or method docstring (missing-function-docstring)
+student_portal.py:11:0: R0913: Too many arguments (7/5) (too-many-arguments)
+student_portal.py:11:0: R0917: Too many positional arguments (7/5) (too-many-positional-arguments)
+student_portal.py:21:4: W1201: Use lazy % formatting in logging functions (logging-not-lazy)
+student_portal.py:25:8: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
+student_portal.py:30:12: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+student_portal.py:37:12: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+student_portal.py:44:17: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+student_portal.py:11:0: R0911: Too many return statements (9/6) (too-many-return-statements)
+
+-----------------------------------
+Your code has been rated at 6.94/10
+

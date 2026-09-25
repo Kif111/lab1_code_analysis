@@ -1,0 +1,14 @@
+************* Module student_portal_secure
+student_portal_secure.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+student_portal_secure.py:32:0: C0116: Missing function or method docstring (missing-function-docstring)
+student_portal_secure.py:45:0: C0116: Missing function or method docstring (missing-function-docstring)
+student_portal_secure.py:52:0: C0116: Missing function or method docstring (missing-function-docstring)
+student_portal_secure.py:62:0: C0116: Missing function or method docstring (missing-function-docstring)
+student_portal_secure.py:77:4: C0415: Import outside toplevel (secrets) (import-outside-toplevel)
+student_portal_secure.py:88:0: R0913: Too many arguments (7/5) (too-many-arguments)
+student_portal_secure.py:88:0: R0917: Too many positional arguments (7/5) (too-many-positional-arguments)
+student_portal_secure.py:88:68: W0613: Unused argument 'role' (unused-argument)
+
+-----------------------------------
+Your code has been rated at 8.47/10
+

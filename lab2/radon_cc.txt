@@ -1,0 +1,5 @@
+student_portal.py
+    F 11:0 process_student_request - B
+
+1 blocks (classes, functions, methods) analyzed.
+Average complexity: B (9.0)
