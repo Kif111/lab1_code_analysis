@@ -1,0 +1,7 @@
+=== BEFORE ===
+Total: 9
+Severity: Counter({'LOW': 4, 'HIGH': 3, 'MEDIUM': 2})
+
+=== AFTER ===
+Total: 3
+Severity: Counter({'LOW': 3})

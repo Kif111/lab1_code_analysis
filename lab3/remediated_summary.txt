@@ -1,0 +1,6 @@
+Total: 3
+Severity: Counter({'LOW': 3})
+Confidence: Counter({'HIGH': 3})
+B404 LOW ./remediated_app.py 6 Consider possible security implications associated with the subprocess module.
+B607 LOW ./remediated_app.py 23 Starting a process with a partial executable path
+B603 LOW ./remediated_app.py 25 subprocess call - check for execution of untrusted input.

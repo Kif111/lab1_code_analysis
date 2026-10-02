@@ -1,0 +1,12 @@
+Total findings: 9
+Severity: Counter({'LOW': 4, 'HIGH': 3, 'MEDIUM': 2})
+Confidence: Counter({'HIGH': 8, 'MEDIUM': 1})
+B403 LOW HIGH ./vulnerable_app.py 4 Consider possible security implications associated with pickle module.
+B404 LOW HIGH ./vulnerable_app.py 6 Consider possible security implications associated with the subprocess module.
+B105 LOW MEDIUM ./vulnerable_app.py 9 Possible hardcoded password: 'Admin123!'
+B324 HIGH HIGH ./vulnerable_app.py 14 Use of weak MD5 hash for security. Consider usedforsecurity=False
+B307 MEDIUM HIGH ./vulnerable_app.py 18 Use of possibly insecure function - consider using safer ast.literal_eval.
+B301 MEDIUM HIGH ./vulnerable_app.py 22 Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+B602 HIGH HIGH ./vulnerable_app.py 27 subprocess call with shell=True identified, security issue.
+B501 HIGH HIGH ./vulnerable_app.py 31 Call to requests with verify=False disabling SSL certificate checks, security issue.
+B311 LOW HIGH ./vulnerable_app.py 35 Standard pseudo-random generators are not suitable for security/cryptographic purposes.

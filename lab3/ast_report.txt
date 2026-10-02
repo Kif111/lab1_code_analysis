@@ -1,0 +1,196 @@
+Module(
+  body=[
+    Import(
+      names=[
+        alias(name='hashlib')]),
+    Import(
+      names=[
+        alias(name='os')]),
+    Import(
+      names=[
+        alias(name='pickle')]),
+    Import(
+      names=[
+        alias(name='random')]),
+    Import(
+      names=[
+        alias(name='subprocess')]),
+    Import(
+      names=[
+        alias(name='requests')]),
+    Assign(
+      targets=[
+        Name(id='ADMIN_PASSWORD', ctx=Store())],
+      value=Constant(value='Admin123!')),
+    Assign(
+      targets=[
+        Name(id='API_KEY', ctx=Store())],
+      value=Constant(value='demo-api-key-123456')),
+    FunctionDef(
+      name='weak_hash',
+      args=arguments(
+        args=[
+          arg(
+            arg='password',
+            annotation=Name(id='str', ctx=Load()))]),
+      body=[
+        Return(
+          value=Call(
+            func=Attribute(
+              value=Call(
+                func=Attribute(
+                  value=Name(id='hashlib', ctx=Load()),
+                  attr='md5',
+                  ctx=Load()),
+                args=[
+                  Call(
+                    func=Attribute(
+                      value=Name(id='password', ctx=Load()),
+                      attr='encode',
+                      ctx=Load()))]),
+              attr='hexdigest',
+              ctx=Load())))],
+      returns=Name(id='str', ctx=Load())),
+    FunctionDef(
+      name='unsafe_eval',
+      args=arguments(
+        args=[
+          arg(
+            arg='expression',
+            annotation=Name(id='str', ctx=Load()))]),
+      body=[
+        Return(
+          value=Call(
+            func=Name(id='eval', ctx=Load()),
+            args=[
+              Name(id='expression', ctx=Load())]))]),
+    FunctionDef(
+      name='unsafe_deserialize',
+      args=arguments(
+        args=[
+          arg(
+            arg='blob',
+            annotation=Name(id='bytes', ctx=Load()))]),
+      body=[
+        Return(
+          value=Call(
+            func=Attribute(
+              value=Name(id='pickle', ctx=Load()),
+              attr='loads',
+              ctx=Load()),
+            args=[
+              Name(id='blob', ctx=Load())]))]),
+    FunctionDef(
+      name='run_system_command',
+      args=arguments(
+        args=[
+          arg(
+            arg='user_value',
+            annotation=Name(id='str', ctx=Load()))]),
+      body=[
+        Assign(
+          targets=[
+            Name(id='command', ctx=Store())],
+          value=BinOp(
+            left=Constant(value='ping -c 1 '),
+            op=Add(),
+            right=Name(id='user_value', ctx=Load()))),
+        Return(
+          value=Call(
+            func=Attribute(
+              value=Name(id='subprocess', ctx=Load()),
+              attr='run',
+              ctx=Load()),
+            args=[
+              Name(id='command', ctx=Load())],
+            keywords=[
+              keyword(
+                arg='shell',
+                value=Constant(value=True)),
+              keyword(
+                arg='capture_output',
+                value=Constant(value=True)),
+              keyword(
+                arg='text',
+                value=Constant(value=True))]))]),
+    FunctionDef(
+      name='insecure_request',
+      args=arguments(
+        args=[
+          arg(
+            arg='url',
+            annotation=Name(id='str', ctx=Load()))]),
+      body=[
+        Return(
+          value=Call(
+            func=Attribute(
+              value=Name(id='requests', ctx=Load()),
+              attr='get',
+              ctx=Load()),
+            args=[
+              Name(id='url', ctx=Load())],
+            keywords=[
+              keyword(
+                arg='verify',
+                value=Constant(value=False)),
+              keyword(
+                arg='timeout',
+                value=Constant(value=5))]))]),
+    FunctionDef(
+      name='weak_token',
+      args=arguments(),
+      body=[
+        Return(
+          value=Call(
+            func=Name(id='str', ctx=Load()),
+            args=[
+              Call(
+                func=Attribute(
+                  value=Name(id='random', ctx=Load()),
+                  attr='randint',
+                  ctx=Load()),
+                args=[
+                  Constant(value=100000),
+                  Constant(value=999999)])]))],
+      returns=Name(id='str', ctx=Load())),
+    FunctionDef(
+      name='read_config',
+      args=arguments(
+        args=[
+          arg(
+            arg='path',
+            annotation=Name(id='str', ctx=Load()))]),
+      body=[
+        With(
+          items=[
+            withitem(
+              context_expr=Call(
+                func=Name(id='open', ctx=Load()),
+                args=[
+                  Name(id='path', ctx=Load()),
+                  Constant(value='r')],
+                keywords=[
+                  keyword(
+                    arg='encoding',
+                    value=Constant(value='utf-8'))]),
+              optional_vars=Name(id='fh', ctx=Store()))],
+          body=[
+            Return(
+              value=Call(
+                func=Attribute(
+                  value=Name(id='fh', ctx=Load()),
+                  attr='read',
+                  ctx=Load())))])])])
+
+Potentially interesting calls:
+line=14: hexdigest
+line=18: eval
+line=22: loads
+line=27: run
+line=31: get
+line=35: str
+line=35: randint
+line=39: open
+line=40: read
+line=14: md5
+line=14: encode
