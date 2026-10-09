@@ -1,0 +1,39 @@
+rules:
+  - id: weak-hash
+    languages: [python]
+    severity: WARNING
+    message: MD5/SHA-1 are not safe for passwords; use hashlib.scrypt, bcrypt or argon2 (CWE-328)
+    pattern-either:
+      - pattern: hashlib.md5(...)
+      - pattern: hashlib.sha1(...)
+
+  - id: flask-tainted-sql
+    mode: taint
+    languages: [python]
+    severity: ERROR
+    message: User input from the request reaches the SQL text of execute(); use a parameterized query (CWE-89)
+    pattern-sources:
+      - pattern: flask.request.args.get(...)
+    pattern-sinks:
+      - patterns:
+          - pattern: $CONN.execute($QUERY, ...)
+          - focus-metavariable: $QUERY
+
+  - id: flask-path-traversal
+    mode: taint
+    languages: [python]
+    severity: WARNING
+    message: User input reaches a file path in open() (CWE-22)
+    pattern-sources:
+      - pattern: flask.request.args.get(...)
+    pattern-sanitizers:
+      - pattern: os.path.basename(...)
+    pattern-sinks:
+      - pattern: open(...)
+
+  - id: flask-debug-true
+    languages: [python]
+    severity: WARNING
+    message: Flask debug mode is enabled; this must not run in production (CWE-489)
+    patterns:
+      - pattern: $APP.run(debug=True, ...)
