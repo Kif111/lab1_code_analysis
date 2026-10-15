@@ -1,0 +1,4 @@
+[audit] open: ('/home/kzef/lab1_code_analysis/lab5/backup.log', 'a', 525377)
+[audit] socket.connect: (<socket.socket fd=4, family=2, type=1, proto=6, laddr=('0.0.0.0', 0)>, ('127.0.0.1', 8080))
+[audit] open: ('/tmp/backup_list.txt', 'w', 524865)
+[audit] subprocess.Popen: ('/bin/sh', ['/bin/sh', '-c', 'tar -czf backup.tar.gz -T /tmp/backup_list.txt'], None, None)
