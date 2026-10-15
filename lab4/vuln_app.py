@@ -14,10 +14,10 @@ def get_db():
 
 @app.route("/user")
 def user():
-    name = request.args.get("name")
+    name = request.args.get("name", "")
     conn = get_db()
-    query = f"SELECT * FROM users WHERE name = '{name}'"
-    return str(conn.execute(query).fetchall())
+    # Fix 2: parameterized query
+    return str(conn.execute("SELECT * FROM users WHERE name = ?", (name,)).fetchall())
 
 @app.route("/ping")
 def ping():
@@ -33,11 +33,14 @@ def load():
 @app.route("/hash")
 def hash_password():
     pwd = request.args.get("pwd", "")
-    return hashlib.md5(pwd.encode()).hexdigest()
+    # Fix 5: scrypt instead of MD5, with salt
+    salt = os.urandom(16)
+    return hashlib.scrypt(pwd.encode(), salt=salt, n=2**14, r=8, p=1).hex()
 
 @app.route("/file")
 def read_file():
-    fname = request.args.get("f")
+    # Fix 6: strip directory part
+    fname = os.path.basename(request.args.get("f", ""))
     with open(os.path.join("files", fname)) as fh:
         return fh.read()
 
